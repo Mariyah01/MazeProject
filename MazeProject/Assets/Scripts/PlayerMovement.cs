@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,13 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float speed;
 
-    [SerializeField] KeyCode KeyPositive;
-    
-    [SerializeField] KeyCode KeyNegative;
-
     [SerializeField] private Animator _animator;
-    
-    
+
+    public int wallet;
+
     void Start()
     {
-        
+
         _animator = GetComponent<Animator>();
     }
 
@@ -33,12 +31,12 @@ public class PlayerMovement : MonoBehaviour
         {
             movement.z = -1;
         }
-        
+
         if (Input.GetKey(KeyCode.D))
         {
             movement.x = 1;
         }
-        
+
         if (Input.GetKey(KeyCode.A))
         {
             movement.x = -1;
@@ -50,8 +48,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _animator.SetBool("isMoving",true);
-            GetComponent<Rigidbody>().velocity = movement*speed;
+            _animator.SetBool("isMoving", true);
+            
         }
+        GetComponent<Rigidbody>().velocity = movement * speed;
+
+        
     }
+
+
 }
+
